@@ -1124,7 +1124,8 @@ def OutputSmooth(options, audio_tracks, video_tracks):
             stream_name = audio_track.language_name
         if stream_name == '' or stream_name == 'Unknown':
             stream_name = "audio_"+audio_track.language
-        audio_url_pattern="QualityLevels({bitrate})/Fragments(%s={start time})" % (stream_name)
+        # See: https://github.com/axiomatic-systems/Bento4/issues/599
+        audio_url_pattern="QualityLevels({bitrate})/Fragments(audio_%s={start time})" % (audio_track.language)
         stream_index = xml.SubElement(client_manifest,
                                       'StreamIndex',
                                       Chunks=str(len(audio_track.moofs)),
