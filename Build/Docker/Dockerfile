@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.16.1
 
 # Setup environment variables
 ENV BENTO4_VERSION 1.6.0-639
@@ -16,7 +16,7 @@ RUN rm -rf /tmp/bento4/cmakebuild && mkdir -p /tmp/bento4/cmakebuild && cd /tmp/
 RUN cd /tmp/bento4 && python3 Scripts/SdkPackager.py x86_64-unknown-linux . cmake && mkdir /opt/bento4 && mv /tmp/bento4/SDK/Bento4-SDK-*.x86_64-unknown-linux/* /opt/bento4
 
 # === Second Stage ===
-FROM alpine:latest
+FROM alpine:3.16.1
 ARG BENTO4_VERSION
 LABEL "com.example.vendor"="Axiomatic Systems, LLC."
 LABEL version=$BENTO4_VERSION

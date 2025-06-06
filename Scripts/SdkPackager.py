@@ -184,7 +184,7 @@ SDK_BUILD_OUTPUT_SUBDIRS = {
     'universal-apple-macosx': '/Release'
 }
 SDK_BUILD_OUTPUT_SUBDIR = SDK_BUILD_OUTPUT_SUBDIRS.get(SDK_TARGET, '')
-SDK_BUILD_OUTPUT_DIR = f'cmakebuild/{SDK_TARGET}{SDK_BUILD_OUTPUT_SUBDIR}'
+SDK_BUILD_OUTPUT_DIR = f'cmakebuild'
 
 print(SDK_NAME)
 
