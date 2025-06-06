@@ -1,7 +1,7 @@
-FROM arm64v8/alpine:latest
+FROM alpine:3.21.3
 
 # Setup environment variables
-ENV BENTO4_VERSION 1.6.0-639
+ENV BENTO4_VERSION 1.6.0-641
 
 # Install Dependencies
 RUN apk update && apk add --no-cache ca-certificates bash python3 make cmake gcc g++ git
@@ -16,7 +16,7 @@ RUN rm -rf /tmp/bento4/cmakebuild && mkdir -p /tmp/bento4/cmakebuild/arm64-unkno
 RUN cd /tmp/bento4 && python3 Scripts/SdkPackager.py arm64-unknown-linux . cmake && mkdir /opt/bento4 && mv /tmp/bento4/SDK/Bento4-SDK-*.arm64-unknown-linux/* /opt/bento4
 
 # === Second Stage ===
-FROM arm64v8/alpine:latest
+FROM alpine:3.21.3
 ARG BENTO4_VERSION
 LABEL "com.example.vendor"="Axiomatic Systems, LLC."
 LABEL version=$BENTO4_VERSION
